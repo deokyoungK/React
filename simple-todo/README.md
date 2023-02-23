@@ -10,9 +10,10 @@
 
 
 
-<img style="margin-right:15px" src="blob:https://velog.io/c3db9da0-79c3-4934-a9a6-d83e2162270d" width="30%" height="90%">
+<img style="margin-right:15px" src="https://velog.velcdn.com/images/yoonezi/post/51577da2-6992-4bda-b467-1a74df585728/image.png" width="30%" height="90%">
 
-<img style="margin-right:15px" src="blob:https://velog.io/c2a392eb-de45-4a04-abdd-aa844212d235" width="30%" height="90%">
+<img style="margin-right:15px" src="https://velog.velcdn.com/images/yoonezi/post/84c46446-178e-4f10-bc6a-018baf1d6ee0/image.png" width="30%" height="90%">
+
 
 </div>
 <div  style="display:flex">

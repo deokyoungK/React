@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { MdCircle } from 'react-icons/md'
+import React, { useEffect ,useState } from 'react'
+import { MdAddCircle } from 'react-icons/md'
+import { TiPencil, TiTrash } from 'react-icons/ti'
 import "./TodoInsert.css"
 
-export default function TodoInsert({onInsertToggle, onInsertTodo}) {
+export default function TodoInsert({onInsertToggle, onInsertTodo, selectedTodo, onRemove, onUpdate}) {
   const [value, setValue] = useState("");
   // function onChange(e) {
   //   setValue(e.target.value);
@@ -20,17 +21,45 @@ export default function TodoInsert({onInsertToggle, onInsertTodo}) {
     onInsertToggle();
   }
 
+// useEffect란? 컴포넌트가 처음 렌더링 되면은 어떤 것을 실행하느냐를 여기서 처리는거임
+  useEffect(() => {
+    if (selectedTodo) {
+      setValue(selectedTodo.text);
+    }
+  }, [selectedTodo]);
+
   return (
     <div>
       <div className='background' onClick={onInsertToggle}></div>
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={
+          selectedTodo
+            ? () => {
+                onUpdate(selectedTodo.id, value);
+              }
+            : onSubmit
+        }
+      >
         <input placeholder='무엇을 해야 하나요?'
         value={value}
         onChange={onChange}
         ></input>
-        <button type='submit'>
-          <MdCircle />
-        </button>
+        {selectedTodo ? (
+          <div className="rewrite">
+            <TiPencil
+              onClick={() => {
+                onUpdate(selectedTodo.id, value);
+              }}
+            />
+            <TiTrash
+            onClick={() => {onRemove(selectedTodo.id)}}
+            />
+          </div>
+        ) : (
+          <button type="submit">
+            <MdAddCircle />
+          </button>
+        )}
       </form>
     </div>
   )

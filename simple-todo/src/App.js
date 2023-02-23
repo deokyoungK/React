@@ -9,6 +9,7 @@ import TodoList from './components/TodoList';
 let nextId = 4;
 
 function App() {
+  const [selectedTodo, setSelectedTodo] = useState(null);
   const [insertToggle, setInsertToggle] = useState(false);
   // useState() 괄호 사이에 초기값 넣어주기 // 여기선 객체 배열로 설정할거임
   const [todos, setTodos] = useState([
@@ -31,6 +32,10 @@ function App() {
 
 function onInsertToggle() {
   // 이전 값의 Boolean 값을 반대로 바꿔주는 함수를 리턴하도록 함
+  if (selectedTodo) {
+    setSelectedTodo(null);
+    // 만약 selectedTodo가 있는 경우에는 setSelectedTodo를 이용하여 다시 null값을 주도록 함
+  }
   setInsertToggle(prev => !prev)
 };
  
@@ -61,22 +66,42 @@ function onInsertTodo(text){
     );
   }
 
+
+  function onChangeSelectedTodo(todo) {
+    setSelectedTodo(todo);
+  }
+
+
+  function onRemove(id) {
+    onInsertToggle();
+    setTodos(todos => todos.filter(todo => todo.id !== id))
+  }
+
+
+  function onUpdate(id, text){
+    onInsertToggle();
+    setTodos(todos => 
+      todos.map(todo => todo.id === id ? {...todo, text} : todo))
+  }
+
   return (
     <Template todoLength={todos.length}>
       <TodoList 
       todos={todos}
       onCheckToggle={onCheckToggle}
       onInsertToggle={onInsertToggle} 
-      onInsertTodo={onInsertTodo}
+      onChangeSelectedTodo={onChangeSelectedTodo}
       />
       <div className='add-todo-button' onClick={onInsertToggle}>
         <MdAddCircle />
       </div>
       {insertToggle && (
       <TodoInsert 
-      onCheckToggle={onCheckToggle}
+      selectedTodo={selectedTodo}
       onInsertToggle={onInsertToggle} 
       onInsertTodo={onInsertTodo}
+      onRemove={onRemove}
+      onUpdate={onUpdate}
       /> 
     )}
     </Template>

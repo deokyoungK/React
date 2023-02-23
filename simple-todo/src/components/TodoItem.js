@@ -4,7 +4,7 @@ import "./TodoItem.css"
 
 
 // TodoList에서 todo라는 객체를 받아옴
-export default function TodoItem({todo, onCheckToggle}) {
+export default function TodoItem({todo, onCheckToggle, onInsertToggle,onChangeSelectedTodo}) {
     const { id, text, checked } = todo;
     return (
         <div className="TodoItem">
@@ -13,7 +13,7 @@ export default function TodoItem({todo, onCheckToggle}) {
             <MdCheckBox
               onClick={() => {
                 onCheckToggle(id);
-              }}
+              }}  
             />
           ) : (
             <MdCheckBoxOutlineBlank
@@ -22,7 +22,14 @@ export default function TodoItem({todo, onCheckToggle}) {
               }}
             />
           )}
-                <div className="text">{text}</div>
+                <div className="text"
+                 onClick={() => {
+                  onChangeSelectedTodo(todo);
+                  onInsertToggle(id);
+                 }}
+                >
+                  {text}
+                </div>
             </div>
         </div>
     );

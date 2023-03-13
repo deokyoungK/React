@@ -1,9 +1,11 @@
 import CheckBox from "./pages/CheckBox";
+import OnlyCheckBox from "./pages/OnlyCheckBox";
 
 function App() {
   return (
-    <div className="App">
+    <div className="page">
       <CheckBox />
+      <OnlyCheckBox />
     </div>
   );
 }

@@ -1,14 +1,18 @@
 import { useState } from "react";
 import TodoList from "../components/TodoList";
 
-// 함수가 새로 리렌더링 될 때마다 계속 처음 값으로 돌아가고, 계속 증가시켜야하기 때문에 함수 바깥에 위치시킴
-
 export default function CheckBox() {
   // useState() 괄호 사이에 초기값 넣어주기 // 여기선 객체 배열로 설정할거임
   const [todos, setTodos] = useState([
     {
       id: 1,
       checked: true,
+      text: "나는 체크박스",
+    },
+    {
+      id: 2,
+      checked: false,
+      text: "옆에 박스를 눌러봐 📦",
     },
   ]);
 
@@ -31,6 +35,7 @@ export default function CheckBox() {
 
   return (
     <div>
+      <h3>베열로 구성된 체크박스를 보여줍니다.</h3>
       <TodoList todos={todos} onCheckToggle={onCheckToggle} />
     </div>
   );

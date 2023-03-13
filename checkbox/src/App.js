@@ -1,9 +1,9 @@
-import Main from "./pages/Main";
+import CheckBox from "./pages/CheckBox";
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <CheckBox />
     </div>
   );
 }

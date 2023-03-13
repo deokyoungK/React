@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "../pages/Main";
+import CheckBox from "../pages/CheckBox";
 
 export default function router() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />}></Route>
+          <Route path="/" element={<CheckBox />}></Route>
         </Routes>
       </BrowserRouter>
     </>

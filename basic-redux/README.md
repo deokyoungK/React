@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/101792929/226339849-24445fd1-b41b-4002-9468-9432a1b7d36b.gif">
+<img src="https://user-images.githubusercontent.com/101792929/226386738-055effc9-d844-4cec-accf-df3cf48c21b4.gif">
 
 ## 🔗 의존성 추가
 
